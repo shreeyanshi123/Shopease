@@ -88,13 +88,13 @@ const ShoppingCheckout = () => {
 
 
   return (
-    <div className='flex flex-col bg-white min-h-screen'>
+    <div className='flex flex-col bg-white min-h-screen text-black'>
       <div className='relative h-[220px] w-full overflow-hidden border-b border-black'>
         <img src={img} className='h-full w-full object-cover object-center grayscale' />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 p-5 text-black">
         <Address setcurrentSelectedAddress={setcurrentSelectedAddress} />
-        <div className="flex flex-col gap-4 bg-white border border-black rounded-lg p-4 shadow-sm">
+        <div className="flex flex-col gap-4 bg-white border border-black rounded-lg p-4 shadow-sm text-black">
           {
             cartItems && cartItems.length > 0 ? cartItems.map((item) => (
               <UserCartItemsContent cartItem={item} key={item.productId} />
