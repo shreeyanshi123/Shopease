@@ -60,7 +60,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     fetchStatsAndOrders(page);
-    const socket = io('http://localhost:8000', { withCredentials: true });
+    const socket = io('https://shopease-q3li.onrender.com', { withCredentials: true });
     socket.on('dashboardUpdate', () => {
       fetchStatsAndOrders(page);
     });

@@ -12,7 +12,7 @@ const initialState={
 
 export const getAllOrdersForAdmin = createAsyncThunk('/order/getAllOrdersForAdmin',
     async () => {
-        const response = await axios.get(`http://localhost:8000/api/admin/orders/get`)
+        const response = await axios.get(`https://shopease-q3li.onrender.com/api/admin/orders/get`)
 
         return response.data;
     }
@@ -24,7 +24,7 @@ export const getAllOrdersForAdmin = createAsyncThunk('/order/getAllOrdersForAdmi
 
 export const getOrderDetailsForAdmin = createAsyncThunk('/order/getOrderDetailsForAdmin',
     async (id) => {
-        const response = await axios.get(`http://localhost:8000/api/admin/orders/details/${id}`)
+        const response = await axios.get(`https://shopease-q3li.onrender.com/api/admin/orders/details/${id}`)
 
         return response.data;
     }
@@ -32,7 +32,7 @@ export const getOrderDetailsForAdmin = createAsyncThunk('/order/getOrderDetailsF
 
 
 export const updateOrderStatus= createAsyncThunk('/order/updateOrderStatus',async({id,orderStatus})=>{
-  const resp=await axios.put(`http://localhost:8000/api/admin/orders/update/${id}`,{orderStatus});
+  const resp=await axios.put(`https://shopease-q3li.onrender.com/api/admin/orders/update/${id}`,{orderStatus});
   return resp.data;
 })
 

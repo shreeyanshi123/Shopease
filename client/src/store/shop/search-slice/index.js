@@ -11,7 +11,7 @@ export const getSearchResults=createAsyncThunk(
     "/order/getSearchResults",
     async(keyword)=>{
         const response=await axios.get(
-            `http://localhost:8000/api/shop/search/${keyword}`
+            `https://shopease-q3li.onrender.com/api/shop/search/${keyword}`
         );
         return response.data;
     }

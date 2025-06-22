@@ -18,7 +18,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
         });
 
         const result = await axios.get(
-            `http://localhost:8000/api/shop/products/get?${query}`
+            `https://shopease-q3li.onrender.com/api/shop/products/get?${query}`
         );
 
         console.log(result, "result");
@@ -32,7 +32,7 @@ export const fetchProductDetails = createAsyncThunk(
     "/products/fetchProductDetails",
     async (id) => {
         const result = await axios.get(
-            `http://localhost:8000/api/shop/products/get/${id}`
+            `https://shopease-q3li.onrender.com/api/shop/products/get/${id}`
         );
         // console.log(result?.data,"result");
         return result?.data;

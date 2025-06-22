@@ -12,7 +12,7 @@ export const registerUser=createAsyncThunk(
   "/auth/register",
   async(formData)=>{
     const response=await axios.post(
-      "http://localhost:8000/api/auth/register",
+      "https://shopease-q3li.onrender.com/api/auth/register",
       formData,
       {
         withCredentials:true,
@@ -27,7 +27,7 @@ export const loginUser=createAsyncThunk(
   "/auth/login",
   async(formData)=>{
     const response=await axios.post(
-      "http://localhost:8000/api/auth/login",
+      "https://shopease-q3li.onrender.com/api/auth/login",
       formData,
       {
         withCredentials:true,
@@ -40,7 +40,7 @@ export const loginUser=createAsyncThunk(
 
 export const logoutUser=createAsyncThunk(
   "/auth/logout",async()=>{
-    const response=await axios.post("http://localhost:8000/api/auth/logout",{},{
+    const response=await axios.post("https://shopease-q3li.onrender.com/api/auth/logout",{},{
       withCredentials:true,
     });
     return response.data;
@@ -50,7 +50,7 @@ export const logoutUser=createAsyncThunk(
 
 export const checkAuth=createAsyncThunk("/auth/checkauth",
   async()=>{
-    const response=await axios.get("http://localhost:8000/api/auth/check-auth",{
+    const response=await axios.get("https://shopease-q3li.onrender.com/api/auth/check-auth",{
       withCredentials:true,
       headers:{
         "Cache-Control":"no-store,no-cache,must-revalidate,proxy-revalidate",

@@ -42,7 +42,7 @@ export const ProductImageUpload = ({ imageFile, setImageFile, uploadedImageUrl, 
         setImageLoadingState(true);
         const data = new FormData();
         data.append('my_file', imageFile);
-        const response = await axios.post('http://localhost:8000/api/admin/products/upload-image', data);
+        const response = await axios.post('https://shopease-q3li.onrender.com/api/admin/products/upload-image', data);
 
         console.log(response, "response");
 

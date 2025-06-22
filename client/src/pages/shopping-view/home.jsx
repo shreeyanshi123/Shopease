@@ -107,7 +107,7 @@ const ShoppingHome = () => {
 
   useEffect(() => {
     // Connect as a shopper to Socket.io (correct query param usage)
-    const socket = io('http://localhost:8000?role=shopper', { withCredentials: true });
+    const socket = io('https://shopease-q3li.onrender.com?role=shopper', { withCredentials: true });
     socket.on('newProduct', (product) => {
       // Send notification event to header
       window.dispatchEvent(new CustomEvent('notify', {

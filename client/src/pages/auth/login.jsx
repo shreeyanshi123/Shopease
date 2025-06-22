@@ -67,7 +67,7 @@ const AuthLogin = () => {
         className="w-full flex items-center justify-center gap-2 bg-white text-black border border-gray-300 hover:bg-gray-100"
         asChild
       >
-        <a href="http://localhost:8000/auth/google">
+        <a href="https://shopease-q3li.onrender.com/auth/google">
           <GoogleIcon className="w-5 h-5" />
           Login with Google
         </a>
