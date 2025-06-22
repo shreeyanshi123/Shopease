@@ -44,7 +44,7 @@ const AuthRegister = () => {
     <div className="mx-auto w-full max-w-md space-y-6">
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Create new Account</h1>
-        <p className="mt-2">Already have an Account?
+        <p className="mt-2 text-gray-800">Already have an Account?
           <Link to='/auth/login' className="font-medium ml-2 text-primary hover:underline">
             Login
           </Link>

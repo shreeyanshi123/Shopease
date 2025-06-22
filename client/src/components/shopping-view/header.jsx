@@ -44,7 +44,7 @@ function MenuItems() {
   return (
     <nav className='flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row'>
       {shoppingViewHeaderMenuItems.map((menuItem) => (
-        <Label onClick={() => handleNavigate(menuItem)} className="text-sm font-medium cursor-pointer" key={menuItem.id}>{menuItem.label}</Label>
+        <Label onClick={() => handleNavigate(menuItem)} className="text-sm font-semibold cursor-pointer text-black hover:text-white hover:bg-black px-3 py-1 rounded transition-colors duration-150" key={menuItem.id}>{menuItem.label}</Label>
       ))}
     </nav>
   );
@@ -91,11 +91,10 @@ function HeaderRightContent() {
   return (
     <div className='flex lg:items-center lg:flex-row flex-col gap-4'>
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
-
-        <Button onClick={() => setOpenCartSheet(true)} variant="outline" size="icon">
+        <Button onClick={() => setOpenCartSheet(true)} variant="outline" size="icon" className="relative border-black text-black bg-white hover:bg-black hover:text-white transition-colors duration-150">
           <ShoppingCart className='w-6 h-6' />
           {cartItems && cartItems.length > 0 && (
-            <span className="ml-1 bg-primary text-white rounded-full px-2 py-0.5 text-xs font-bold absolute top-0 right-0">
+            <span className="ml-1 bg-black text-white rounded-full px-2 py-0.5 text-xs font-bold absolute top-0 right-0">
               {cartItems.length}
             </span>
           )}
@@ -103,31 +102,28 @@ function HeaderRightContent() {
         </Button>
         <UserCartWrapper setOpenCartSheet={setOpenCartSheet} cartItems={cartItems} />
       </Sheet>
-
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className='bg-black'>
             <AvatarFallback className='bg-black text-white font-extrabold'>{user.userName[0]}</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side="right" className="w-56">
-          <DropdownMenuLabel>Logged in as {user?.userName} </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => navigate("/shop/account")}>
+        <DropdownMenuContent side="right" className="w-56 bg-white text-black border border-black">
+          <DropdownMenuLabel className="text-black">Logged in as {user?.userName} </DropdownMenuLabel>
+          <DropdownMenuSeparator className="bg-black" />
+          <DropdownMenuItem onClick={() => navigate("/shop/account")} className="hover:bg-black hover:text-white">
             <UserCog className="mr-2 h-4 w-4" />
             Account
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={handleLogout}>
+          <DropdownMenuItem onClick={handleLogout} className="hover:bg-black hover:text-white">
             <LogOut className='mr-2 h-4 w-4' />
             Logout
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
       <Notifications notifications={notifications} unreadCount={unreadCount} onOpen={handleOpen} />
     </div>
   )
-
 }
 
 
@@ -136,20 +132,20 @@ const ShoppingHeader = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
-    <header className="  top-0 z-40 w-full border-b bg-background">
+    <header className="top-0 z-40 w-full border-b border-black bg-white">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/shop/home" className="flex items-center gap-2">
+        <Link to="/shop/home" className="flex items-center gap-2 text-black font-bold">
           <HousePlug className="h-6 w-6" />
-          <span>Ecommerce</span>
+          <span>ShopEase</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="lg:hidden">
+            <Button variant="outline" size="icon" className="lg:hidden border-black text-black bg-white hover:bg-black hover:text-white transition-colors duration-150">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle header menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-full max-w-xs">
+          <SheetContent side="left" className="w-full max-w-xs bg-white text-black border-r border-black">
             <MenuItems />
             <HeaderRightContent />
           </SheetContent>
@@ -157,7 +153,6 @@ const ShoppingHeader = () => {
         <div className="hidden lg:block">
           <MenuItems />
         </div>
-
         <div className="hidden lg:block">
           <HeaderRightContent />
         </div>

@@ -88,27 +88,28 @@ const ShoppingCheckout = () => {
 
 
   return (
-    <div className='flex flex-col'>
-      <div className='relative h-[300px] w-full overflow-hidden'>
-        <img src={img} className='h-full w-full object-cover object-center' />
+    <div className='flex flex-col bg-white min-h-screen'>
+      <div className='relative h-[220px] w-full overflow-hidden border-b border-black'>
+        <img src={img} className='h-full w-full object-cover object-center grayscale' />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 p-5">
         <Address setcurrentSelectedAddress={setcurrentSelectedAddress} />
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 bg-white border border-black rounded-lg p-4 shadow-sm">
           {
             cartItems && cartItems.length > 0 ? cartItems.map((item) => (
-              <UserCartItemsContent cartItem={item} />
-            )) : null
+              <UserCartItemsContent cartItem={item} key={item.productId} />
+            )) : (
+              <div className="text-black text-lg font-semibold py-8 text-center">Your cart is empty.</div>
+            )
           }
-
           <div className="mt-8 space-y-4">
             <div className="flex justify-between">
-              <span className="font-bold">Total</span>
-              <span className="font-bold">${totalCartAmount}</span>
+              <span className="font-bold text-black">Total</span>
+              <span className="font-bold text-black">${totalCartAmount}</span>
             </div>
           </div>
           <div className="mt-4 w-full">
-            <Button onClick={handleInitiatePaypalPayment} className="w-full">Checkout with PayPal</Button>
+            <Button onClick={handleInitiatePaypalPayment} className="w-full border-black text-black bg-white hover:bg-black hover:text-white transition-colors duration-150">Checkout with PayPal</Button>
           </div>
         </div>
       </div>

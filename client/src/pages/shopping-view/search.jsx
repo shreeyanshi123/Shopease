@@ -86,20 +86,20 @@ function SearchProducts() {
   console.log(searchResults, "searchResults");
 
   return (
-    <div className="container mx-auto md:px-6 px-4 py-8">
+    <div className="container mx-auto md:px-6 px-4 py-8 bg-white min-h-screen">
       <div className="flex justify-center mb-8">
         <div className="w-full flex items-center">
           <Input
             value={keyword}
             name="keyword"
             onChange={(event) => setKeyword(event.target.value)}
-            className="py-6"
+            className="py-6 border-black text-black bg-white placeholder:text-black focus:ring-black focus:border-black"
             placeholder="Search Products..."
           />
         </div>
       </div>
       {!searchResults.length ? (
-        <h1 className="text-5xl font-extrabold">No result found!</h1>
+        <h1 className="text-3xl font-extrabold text-black text-center">No result found!</h1>
       ) : null}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {searchResults.map((item) => (
@@ -107,6 +107,7 @@ function SearchProducts() {
             handleAddToCart={handleAddtoCart}
             product={item}
             handleGetProductDetails={handleGetProductDetails}
+            key={item.id}
           />
         ))}
       </div>
