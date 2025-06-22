@@ -164,8 +164,8 @@ const ShoppingHome = () => {
             <ShoppingProductTile
               key={product}
               product={product}
-              onAddToCart={handleAddToCart}
-              onShowDetails={handleGetProductDetails}
+              handleAddToCart={handleAddToCart}
+              handleGetProductDetails={handleGetProductDetails}
             />
           ))}
         </div>
