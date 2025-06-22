@@ -10,7 +10,7 @@ router.get('/google/callback', passport.authenticate('google', {
 }), (req, res) => {
   req.session.save(() => {
     // Redirect to frontend after login
-    res.redirect('http://localhost:5173/shop/home');
+    res.redirect('https://shopease-frontend-sdjy.onrender.com/shop/home');
   });
 });
 
