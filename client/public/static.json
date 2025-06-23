@@ -1,5 +1,2 @@
 {
-  "routes": {
-    "/**": "index.html"
-  }
 }
