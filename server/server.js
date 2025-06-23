@@ -7,6 +7,16 @@ const http = require('http');
 const { Server } = require('socket.io');
 const session = require('express-session');
 
+const dialogflow = require('dialogflow');
+const uuid = require('uuid');
+const path = require('path');
+
+
+const DIALOGFLOW_PROJECT_ID = 'shopease-463615'; // Set to your project_id from the JSON key
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+const sessionClient = new dialogflow.SessionsClient({ credentials: serviceAccount });
+
+
 const authRouter=require("./routes/auth/auth-routes");
 const adminProductsRouter=require("./routes/admin/product-routes");
 const shopProductsRouter=require("./routes/shop/product-routes");
@@ -107,6 +117,33 @@ app.use('/api/shop/address',shopAddressRouter)
 app.use('/api/shop/order',shopOrderRouter);
 app.use('/api/shop/search',shopSearchRouter);
 app.use('/auth', oauthRouter);
+
+
+
+app.post('/api/dialogflow', async (req, res) => {
+  const { message, sessionId } = req.body;
+  if (!message) return res.status(400).json({ error: 'Message is required' });
+  const sessionPath = sessionClient.sessionPath(DIALOGFLOW_PROJECT_ID, sessionId || uuid.v4());
+  const request = {
+    session: sessionPath,
+    queryInput: {
+      text: {
+        text: message,
+        languageCode: 'en-US',
+      },
+    },
+  };
+  try {
+    const responses = await sessionClient.detectIntent(request);
+    const result = responses[0].queryResult;
+    res.json({ reply: result.fulfillmentText });
+  } catch (err) {
+    console.error('Dialogflow error:', err);
+    res.status(500).json({ error: 'Dialogflow error' });
+  }
+});
+
+
 
 
 server.listen(PORT,()=>console.log(`Server is now running on port ${PORT}`));
