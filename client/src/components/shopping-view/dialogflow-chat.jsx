@@ -52,7 +52,6 @@ const DialogflowChat = () => {
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleSend()}
               placeholder="Type your question..."
-              disabled={loading}
             />
             <button
               className="bg-blue-600 text-white px-4 py-1 rounded disabled:opacity-50"
