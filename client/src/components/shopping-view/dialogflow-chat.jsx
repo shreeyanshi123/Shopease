@@ -47,7 +47,7 @@ const DialogflowChat = () => {
           <div className="flex-1 p-4 overflow-y-auto max-h-80">
             {messages.map((msg, idx) => (
               <div key={idx} className={`mb-2 text-sm ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
-                <span className={`inline-block px-3 py-2 rounded-lg ${msg.sender === 'user' ? 'bg-blue-100' : 'bg-gray-100'}`}>{msg.text}</span>
+                <span className={`inline-block px-3 py-2 rounded-lg ${msg.sender === 'user' ? 'bg-blue-100' : 'bg-gray-100 text-gray-900'}`}>{msg.text}</span>
               </div>
             ))}
             {loading && <div className="text-gray-400">Bot is typing...</div>}
