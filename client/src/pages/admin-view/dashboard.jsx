@@ -104,21 +104,21 @@ const AdminDashboard = () => {
     <div className="w-full min-h-screen bg-[#f7fafd] p-2 sm:p-4 md:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 text-[#223263] text-center">Admin Dashboard</h1>
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-10">
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#3b82f6] w-full">
-          <span className="text-gray-500 text-sm sm:text-base">Total Sales</span>
-          <span className="text-2xl sm:text-3xl font-bold text-green-600 mt-2">{stats.sales.toLocaleString()}</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#3b82f6] w-full min-h-[80px]">
+          <span className="text-gray-500 text-sm sm:text-base block">Total Sales</span>
+          <span className="text-2xl sm:text-3xl font-bold text-green-600 mt-2 block">{stats.sales?.toLocaleString?.() ?? 0}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#a855f7] w-full">
-          <span className="text-gray-500 text-sm sm:text-base">Total Orders</span>
-          <span className="text-2xl sm:text-3xl font-bold text-[#223263] mt-2">{stats.orders}</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#a855f7] w-full min-h-[80px]">
+          <span className="text-gray-500 text-sm sm:text-base block">Total Orders</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#223263] mt-2 block">{stats.orders ?? 0}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f43f5e] w-full">
-          <span className="text-gray-500 text-sm sm:text-base">Total Users</span>
-          <span className="text-2xl sm:text-3xl font-bold text-[#f43f5e] mt-2">{stats.users}</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f43f5e] w-full min-h-[80px]">
+          <span className="text-gray-500 text-sm sm:text-base block">Total Users</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#f43f5e] mt-2 block">{stats.users ?? 0}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f59e42] w-full">
-          <span className="text-gray-500 text-sm sm:text-base">Users Online</span>
-          <span className="text-2xl sm:text-3xl font-bold text-[#f59e42] mt-2">{usersOnline.admins} Admin / {usersOnline.shoppers} Shoppers</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f59e42] w-full min-h-[80px]">
+          <span className="text-gray-500 text-sm sm:text-base block">Users Online</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#f59e42] mt-2 block">{usersOnline.admins ?? 0} Admin / {usersOnline.shoppers ?? 0} Shoppers</span>
         </div>
       </div>
       {/* Sales Chart at the top, full width */}
