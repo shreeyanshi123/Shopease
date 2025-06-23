@@ -18,6 +18,8 @@ const PAGE_SIZE = 10;
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+const API_BASE = import.meta.env.VITE_BACKEND_URI || '';
+
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ sales: 0, orders: 0, users: 0 });
   const [recentOrders, setRecentOrders] = useState([]);
@@ -33,11 +35,11 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       setError(null);
-      const statsRes = await fetch('/api/admin/dashboard/dashboard-stats');
+      const statsRes = await fetch(`${API_BASE}/api/admin/dashboard/dashboard-stats`, { credentials: 'include' });
       if (!statsRes.ok) throw new Error('Failed to fetch stats');
       const statsData = await statsRes.json();
       setStats(statsData);
-      const ordersRes = await fetch(`/api/admin/dashboard/recent-orders?page=${pageNum}&limit=${PAGE_SIZE}`);
+      const ordersRes = await fetch(`${API_BASE}/api/admin/dashboard/recent-orders?page=${pageNum}&limit=${PAGE_SIZE}`, { credentials: 'include' });
       if (!ordersRes.ok) throw new Error('Failed to fetch orders');
       const ordersData = await ordersRes.json();
       console.log('Fetched orders for page', pageNum, ordersData); // Debug log
