@@ -34,9 +34,8 @@ function App() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <Skeleton className="w-full max-w-lg mx-auto bg-black h-[600px] rounded-xl mt-10" />
-    
-  }
+  return <Skeleton className="w-screen h-screen bg-white rounded-none m-0" />
+}
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-zinc-900 to-white text-white font-sans flex flex-col overflow-x-hidden">
       <Routes>
