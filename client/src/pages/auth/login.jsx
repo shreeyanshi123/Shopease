@@ -3,10 +3,9 @@ import { loginFormControls } from "@/config";
 import { useToast } from "@/hooks/use-toast";
 import { loginUser } from "@/store/auth-slice";
 import { Button } from "@/components/ui/button";
-import GoogleIcon from "@/components/ui/google-icon";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const initialState = {
   userName: "",
@@ -57,21 +56,6 @@ const AuthLogin = () => {
         setFormData={setFormData}
         onSubmit={onSubmit}
       />
-      <div className="flex items-center my-4">
-        <div className="flex-grow border-t border-border" />
-        <span className="mx-2 text-xs text-muted-foreground">or</span>
-        <div className="flex-grow border-t border-border" />
-      </div>
-      <Button
-        variant="outline"
-        className="w-full flex items-center justify-center gap-2 bg-white text-black border border-gray-300 hover:bg-gray-100"
-        asChild
-      >
-        <a href="https://shopease-q3li.onrender.com/auth/google">
-          <GoogleIcon className="w-5 h-5" />
-          Login with Google
-        </a>
-      </Button>
     </div>
   );
 };
