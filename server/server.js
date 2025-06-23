@@ -89,8 +89,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: false, // Set to true if using HTTPS
-    sameSite: 'lax', // Allows cross-origin cookies for localhost dev
+    secure: process.env.NODE_ENV === 'production', // true for HTTPS in production
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-site cookies in prod
   },
 }));
 app.use(passport.initialize());
