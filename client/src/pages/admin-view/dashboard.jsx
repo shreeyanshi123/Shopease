@@ -101,31 +101,31 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#f7fafd] p-8">
-      <h1 className="text-3xl font-bold mb-8 text-[#223263]">Admin Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border-b-4 border-[#3b82f6]">
-          <span className="text-gray-500">Total Sales</span>
-          <span className="text-3xl font-bold text-green-600 mt-2">{stats.sales.toLocaleString()}</span>
+    <div className="w-full min-h-screen bg-[#f7fafd] p-2 sm:p-4 md:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 text-[#223263] text-center">Admin Dashboard</h1>
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-10">
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#3b82f6] w-full">
+          <span className="text-gray-500 text-sm sm:text-base">Total Sales</span>
+          <span className="text-2xl sm:text-3xl font-bold text-green-600 mt-2">{stats.sales.toLocaleString()}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border-b-4 border-[#a855f7]">
-          <span className="text-gray-500">Total Orders</span>
-          <span className="text-3xl font-bold text-[#223263] mt-2">{stats.orders}</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#a855f7] w-full">
+          <span className="text-gray-500 text-sm sm:text-base">Total Orders</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#223263] mt-2">{stats.orders}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border-b-4 border-[#f43f5e]">
-          <span className="text-gray-500">Total Users</span>
-          <span className="text-3xl font-bold text-[#f43f5e] mt-2">{stats.users}</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f43f5e] w-full">
+          <span className="text-gray-500 text-sm sm:text-base">Total Users</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#f43f5e] mt-2">{stats.users}</span>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border-b-4 border-[#f59e42]">
-          <span className="text-gray-500">Users Online</span>
-          <span className="text-3xl font-bold text-[#f59e42] mt-2">{usersOnline.admins} Admin / {usersOnline.shoppers} Shoppers</span>
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex flex-col items-center border-b-4 border-[#f59e42] w-full">
+          <span className="text-gray-500 text-sm sm:text-base">Users Online</span>
+          <span className="text-2xl sm:text-3xl font-bold text-[#f59e42] mt-2">{usersOnline.admins} Admin / {usersOnline.shoppers} Shoppers</span>
         </div>
       </div>
       {/* Sales Chart at the top, full width */}
-      <div className="bg-white rounded-xl shadow p-8 mb-8 w-full">
-        <h2 className="text-2xl font-bold mb-6 text-black">Sales Over Last 7 Days</h2>
+      <div className="bg-white rounded-xl shadow p-4 sm:p-8 mb-6 sm:mb-8 w-full overflow-x-auto">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-black text-center">Sales Over Last 7 Days</h2>
         {salesData && salesData.datasets && salesData.datasets[0].data && salesData.datasets[0].data.length > 0 ? (
-          <div className="w-full" style={{ minWidth: 250 }}>
+          <div className="w-full min-w-[250px]" style={{ minWidth: 250 }}>
             <Line data={salesData} options={{
               responsive: true,
               maintainAspectRatio: false,
@@ -140,21 +140,21 @@ const AdminDashboard = () => {
             }} height={220} />
           </div>
         ) : (
-          <div className="text-gray-400 text-center py-12">No sales data available</div>
+          <div className="text-gray-400 text-center py-8 sm:py-12">No sales data available</div>
         )}
       </div>
       {/* Recent Orders Table below chart */}
-      <div className="bg-white rounded-xl shadow p-8 flex flex-col w-full">
-        <h2 className="text-2xl font-bold mb-6 text-black">Recent Orders</h2>
+      <div className="bg-white rounded-xl shadow p-2 sm:p-8 flex flex-col w-full overflow-x-auto">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-black text-center">Recent Orders</h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full text-left border rounded-lg">
+          <table className="min-w-[600px] sm:min-w-full text-left border rounded-lg text-xs sm:text-base">
             <thead>
               <tr className="bg-[#fafafa]">
-                <th className="py-2 px-4 font-semibold text-black">Order ID</th>
-                <th className="py-2 px-4 font-semibold text-black">User</th>
-                <th className="py-2 px-4 font-semibold text-black">Amount</th>
-                <th className="py-2 px-4 font-semibold text-black">Status</th>
-                <th className="py-2 px-4 font-semibold text-black">Date</th>
+                <th className="py-2 px-2 sm:px-4 font-semibold text-black">Order ID</th>
+                <th className="py-2 px-2 sm:px-4 font-semibold text-black">User</th>
+                <th className="py-2 px-2 sm:px-4 font-semibold text-black">Amount</th>
+                <th className="py-2 px-2 sm:px-4 font-semibold text-black">Status</th>
+                <th className="py-2 px-2 sm:px-4 font-semibold text-black">Date</th>
               </tr>
             </thead>
             <tbody>
@@ -163,20 +163,20 @@ const AdminDashboard = () => {
               ) : (
                 Array.isArray(recentOrders) && recentOrders.map(order => (
                   <tr key={order._id} className="border-t hover:bg-[#fafafa] transition">
-                    <td className="py-2 px-4 text-xs break-all text-black">{order._id}</td>
-                    <td className="py-2 px-4 text-xs break-all text-black">{order.userName}</td>
-                    <td className="py-2 px-4 text-black">{typeof order.amount === 'number' ? order.amount.toFixed(2) : order.amount}</td>
-                    <td className="py-2 px-4 capitalize text-black">{order.status}</td>
-                    <td className="py-2 px-4 text-black">{order.createdAt ? new Date(order.createdAt).toLocaleString() : ''}</td>
+                    <td className="py-2 px-2 sm:px-4 text-xs break-all text-black">{order._id}</td>
+                    <td className="py-2 px-2 sm:px-4 text-xs break-all text-black">{order.userName}</td>
+                    <td className="py-2 px-2 sm:px-4 text-black">{typeof order.amount === 'number' ? order.amount.toFixed(2) : order.amount}</td>
+                    <td className="py-2 px-2 sm:px-4 capitalize text-black">{order.status}</td>
+                    <td className="py-2 px-2 sm:px-4 text-black">{order.createdAt ? new Date(order.createdAt).toLocaleString() : ''}</td>
                   </tr>
                 ))
               )}
             </tbody>
           </table>
         </div>
-        <div className="flex justify-between items-center mt-6">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 sm:mt-6 gap-2 sm:gap-0">
           <button
-            className="px-4 py-2 bg-gray-100 text-black rounded disabled:opacity-50"
+            className="px-4 py-2 bg-gray-100 text-black rounded disabled:opacity-50 w-full sm:w-auto"
             onClick={() => setPage(page - 1)}
             disabled={page === 1}
           >
@@ -184,7 +184,7 @@ const AdminDashboard = () => {
           </button>
           <span className="text-black">Page {page} of {totalPages}</span>
           <button
-            className="px-4 py-2 bg-gray-100 text-black rounded disabled:opacity-50"
+            className="px-4 py-2 bg-gray-100 text-black rounded disabled:opacity-50 w-full sm:w-auto"
             onClick={() => setPage(page + 1)}
             disabled={page === totalPages}
           >
