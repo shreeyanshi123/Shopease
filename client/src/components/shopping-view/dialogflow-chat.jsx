@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import React, { useState } from 'react';
 
 const DialogflowChat = () => {
@@ -5,26 +6,33 @@ const DialogflowChat = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [sessionId] = useState(uuidv4()); // Unique session
 
   const handleSend = async () => {
     if (!input.trim()) return;
+
     const userMessage = { sender: 'user', text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setLoading(true);
+
     try {
-      const res = await fetch('/api/dialogflow', {
+      const res = await fetch('https://shopease-q3li.onrender.com/api/dialogflow', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage.text }),
+        body: JSON.stringify({ message: userMessage.text, sessionId }),
       });
+
       const data = await res.json();
       setMessages((prev) => [...prev, { sender: 'bot', text: data.reply }]);
     } catch (err) {
+      console.error(err);
       setMessages((prev) => [...prev, { sender: 'bot', text: 'Error contacting bot.' }]);
     }
+
     setLoading(false);
   };
+
 
   return (
     <div>
