@@ -14,10 +14,17 @@ const CommonForm = ({ formControls, formData, setFormData, onSubmit, buttonText,
     switch (getControlItem.componentType) {
       case "input":
         element = (
-          <Input name={getControlItem.name} placeholder={getControlItem.placeholder} id={getControlItem.name} type={getControlItem.type} value={value} onChange={(event) => setFormData({
-            ...formData,
-            [getControlItem.name]: event.target.value,
-          })}
+          <Input
+            name={getControlItem.name}
+            placeholder={getControlItem.placeholder}
+            id={getControlItem.name}
+            type={getControlItem.type}
+            value={value}
+            onChange={(event) => setFormData({
+              ...formData,
+              [getControlItem.name]: event.target.value,
+            })}
+            className="text-black placeholder:text-gray-400"
           />
         );
         break;
