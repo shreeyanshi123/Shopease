@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import React, { useState } from 'react';
 
 const DialogflowChat = () => {
@@ -6,7 +5,7 @@ const DialogflowChat = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [sessionId] = useState(uuidv4()); // Unique session
+  const [sessionId] = useState(() => crypto.randomUUID()); // Use browser-native UUID
 
   const handleSend = async () => {
     if (!input.trim()) return;
